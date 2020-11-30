@@ -1,0 +1,16 @@
+.vakterest_header_logo, .vakterest_footer_logo {
+    font-family: 'Major Mono Display', monospace;
+}
+
+.vakterest_footer_button {
+    font-size: .6rem;
+}
+
+.vakterest_header {
+    text-align:center; margin:2rem 0;
+}
+
+.vakterest_footer {
+    text-align:center; margin-top:2rem;
+}
+
