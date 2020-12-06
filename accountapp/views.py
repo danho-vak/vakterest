@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 
 def test(request):
@@ -21,3 +21,9 @@ class AccountCreateView(CreateView): # generic view를 상속
     form_class = UserCreationForm
     success_url = reverse_lazy('accountapp:test') # class형 view에서 사용하는 reverse()
     template_name = 'accountapp/create.html'
+
+
+class AccountDetailView(DetailView):
+    model = User
+    context_object_name = 'target_user'
+    template_name = 'accountapp/detail.html'
