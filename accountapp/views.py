@@ -6,7 +6,7 @@ from django.views.generic import CreateView
 
 
 def test(request):
-    return render(request, 'accountapp/temp.html')
+    return render(request, 'accountapp/test.html')
 
 
 # 1. sign up

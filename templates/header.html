@@ -6,6 +6,10 @@
         <span>nav1</span>
         <span>nav2</span>
         <span>nav3</span>
-        <span>nav4</span>
+        {% if not user.is_authenticated %}
+            <span onclick="location.href='{% url 'accountapp:login' %}?next={{ request.path }}'">login</span>
+        {% else %}
+            <span onclick="location.href='{% url 'accountapp:logout' %}?next={{ request.path }}'">logout</span>
+        {% endif %}
     </div>
 </div>
