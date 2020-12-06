@@ -15,6 +15,30 @@
     <!--  load DEFAULT CSS LINK  -->
     <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
 
+    <!--  settings DEFAULT Font  -->
+    <style>
+        @font-face {
+            font-family : 'NanumSquareRoundR';
+            src : local('NanumSquareRoundR'),
+            url('{% static 'fonts/NanumSquareRoundR.ttf' %}') format('opentype');
+        }
+        @font-face {
+            font-family : 'NanumSquareRoundL';
+            src : local('NanumSquareRoundL'),
+            url('{% static 'fonts/NanumSquareRoundL.ttf' %}') format('opentype');
+        }
+        @font-face {
+            font-family : 'NanumSquareRoundB';
+            src : local('NanumSquareRoundB'),
+            url('{% static 'fonts/NanumSquareRoundB.ttf' %}') format('opentype');
+        }
+        @font-face {
+            font-family : 'NanumSquareRoundEB';
+            src : local('NanumSquareRoundEB'),
+            url('{% static 'fonts/NanumSquareRoundEB.ttf' %}') format('opentype');
+        }
+    </style>
+
     <meta charset="UTF-8">
     <title>Vakterest</title>
 </head>
