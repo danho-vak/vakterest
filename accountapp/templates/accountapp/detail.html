@@ -9,6 +9,14 @@
             <h2 style="font-family: NanumSquareRoundEB">
                 {{ target_user.username }}
             </h2>
+            {% if target_user == user %}
+                <button class="btn btn-dark rounded-pill" onclick="location.href='{% url 'accountapp:update' pk=user.id %}'">
+                    Change Info
+                </button>
+                <button class="btn btn-danger rounded-pill" onclick="location.href='{% url 'accountapp:delete' pk=user.id %}'">
+                    Quit
+                </button>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
