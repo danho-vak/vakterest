@@ -11,9 +11,7 @@ from .decorators import account_ownership_required
 from .forms import AccountUpdateForm
 
 
-has_ownership = [login_required, account_ownership_required]  # List for method_decorator
-# need user login, target object's own user are correct
-
+has_ownership = [account_ownership_required, login_required]  # List for method_decorator
 
 
 @login_required
@@ -28,7 +26,6 @@ class AccountCreateView(CreateView): # generic view를 상속
     success_url = reverse_lazy('accountapp:test') # class형 view에서 사용하는 reverse()
     template_name = 'accountapp/create.html'
 
-
 class AccountDetailView(DetailView):
     model = User
     context_object_name = 'target_user'
@@ -39,8 +36,8 @@ class AccountDetailView(DetailView):
 @method_decorator(has_ownership, 'post')
 class AccountUpdateView(UpdateView): # generic view를 상속
     model = User
-    form_class = AccountUpdateForm
     context_object_name = 'target_user'
+    form_class = AccountUpdateForm
     success_url = reverse_lazy('accountapp:test') # class형 view에서 사용하는 reverse()
     template_name = 'accountapp/update.html'
 
