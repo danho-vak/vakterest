@@ -1,24 +1,27 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
+from .decorators import account_ownership_required
 from .forms import AccountUpdateForm
 
 
+has_ownership = [login_required, account_ownership_required]  # List for method_decorator
+# need user login, target object's own user are correct
+
+
+
+@login_required
 def test(request):
-    return render(request, 'accountapp/test.html')
+        return render(request, 'accountapp/test.html')
 
 
-# 1. sign up
-# 2. sign in
-# 3. view info
-# 4. change info
-# 5. quit
-
-
-# Class Base View
+# Class Based Views
 class AccountCreateView(CreateView): # generic view를 상속
     model = User
     form_class = UserCreationForm
@@ -32,6 +35,8 @@ class AccountDetailView(DetailView):
     template_name = 'accountapp/detail.html'
 
 
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
 class AccountUpdateView(UpdateView): # generic view를 상속
     model = User
     form_class = AccountUpdateForm
@@ -40,6 +45,8 @@ class AccountUpdateView(UpdateView): # generic view를 상속
     template_name = 'accountapp/update.html'
 
 
+@method_decorator(has_ownership, 'get')
+@method_decorator(has_ownership, 'post')
 class AccountDeleteView(DeleteView):
     model = User
     context_object_name = 'target_user'
