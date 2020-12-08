@@ -34,6 +34,12 @@
   <div class="item13"><img src="https://picsum.photos/200/600"></div>
 </div>
 
+<div style="text-align:center;">
+  <button class="btn btn-primary rounded-pill col4 mt-3" onclick="location.href='{% url 'articleapp:create' %}'">
+    Create Article
+  </button>
+</div>
+
 <script src="{% static 'js/magicgrid.js' %}"></script>
 
 {% endblock %}

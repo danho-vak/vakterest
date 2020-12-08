@@ -3,15 +3,37 @@
 {% block content %}
     <div>
         <div style="text-align:center; max-width:500px; margin :4rem auto;">
-            <h1>
-                {{ target_article.title }}
-            </h1>
-            {% if target_article.image %}
-                <img src="{{ target_article.image.url }}" alt="">
+            {% if target_user.profile %}
+                {% if target_user.profile.image %}
+                    <img src="{{ target_user.profile.image.url }}" alt=""
+                        style="height:12rem; width:12rem; border-radius:20rem; margin-bottom:2rem;">
+                {% endif %}
+                <h2 style="font-family: NanumSquareRoundEB">
+                    {{ target_user.profile.nickname }}
+                </h2>
+                <button class="btn btn-dark rounded-pill col-5 mb-4" onclick="location.href='{% url 'profileapp:update' pk=target_user.profile.pk %}'">edit</button>
+                <h5>
+                    {{ target_user.profile.message }}
+                </h5>
+            {% else %}
+                <h5>
+                    이런..! 아직 프로필 작성이 안됬군요!
+                </h5>
+                <button class="btn btn-info rounded-pill col-5" onclick="location.href='{% url 'profileapp:create' %}'">Create Profile</button>
             {% endif %}
+            <br>
             <p>
-                {{ target_article.content }}
+                {{ target_user.date_joined }}
             </p>
+
+            {% if target_user == user %}
+                <button class="btn btn-dark rounded-pill" onclick="location.href='{% url 'accountapp:update' pk=user.id %}'">
+                    Change Info
+                </button>
+                <button class="btn btn-danger rounded-pill" onclick="location.href='{% url 'accountapp:delete' pk=user.id %}'">
+                    Quit
+                </button>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

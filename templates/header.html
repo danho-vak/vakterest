@@ -3,15 +3,15 @@
         <h1 class="vakterest_header_logo" onclick="location.href='{% url 'accountapp:test' %}'">vakterest</h1>
     </div>
     <div>
-        <span>nav1</span>
+        <span onclick="location.href='{% url 'articleapp:list' %}'">Articles</span>
         <span>nav2</span>
         <span>nav3</span>
         {% if not user.is_authenticated %}
-            <span onclick="location.href='{% url 'accountapp:login' %}?next={{ request.path }}'">login</span>
-            <span onclick="location.href='{% url 'accountapp:create' %}'">Sign Up</span>
+            <span onclick="location.href='{% url 'accountapp:login' %}?next={{ request.path }}'">Login</span>
+            <span onclick="location.href='{% url 'accountapp:create' %}'">SignUp</span>
         {% else %}
             <span onclick="location.href='{% url 'accountapp:detail' pk=user.id %}'">MyPage</span>
-            <span onclick="location.href='{% url 'accountapp:logout' %}?next={{ request.path }}'">logout</span>
+            <span onclick="location.href='{% url 'accountapp:logout' %}?next={{ request.path }}'">Logout</span>
         {% endif %}
     </div>
 </div>
