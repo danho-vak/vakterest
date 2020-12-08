@@ -26,6 +26,7 @@ class AccountCreateView(CreateView): # generic view를 상속
     success_url = reverse_lazy('accountapp:test') # class형 view에서 사용하는 reverse()
     template_name = 'accountapp/create.html'
 
+@method_decorator(login_required, 'get')
 class AccountDetailView(DetailView):
     model = User
     context_object_name = 'target_user'
