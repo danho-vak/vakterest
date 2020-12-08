@@ -8,4 +8,4 @@ class Article(models.Model):
     title = models.CharField(max_length=200, null=False)
     image = models.ImageField(upload_to='article/', null=True)
     content = models.TextField(null=True)
-    created_at = models.DateField(auto_created=True, null=True)
+    created_at = models.DateTimeField(auto_created=True, null=True)
