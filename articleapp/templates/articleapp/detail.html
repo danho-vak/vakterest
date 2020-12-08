@@ -24,6 +24,14 @@
         </button>
     {% endif %}
     <hr>
+    {% if target_article.comment %}
+        {% for comment in target_article.comment.all %}
+            {% include 'commentapp/detail.html' with comment=comment %}
+        {% endfor %}
+    {% else %}
+        <h4>아직 댓글이 없어요!</h4>
+    {% endif %}
+
     {% include 'commentapp/create.html' with article=target_article%}
 </div>
 {% endblock %}
