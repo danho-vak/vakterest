@@ -6,23 +6,36 @@
             <p>
                 {{ target_user.date_joined }}
             </p>
+            <img src="{{ target_user.profile.image.url }}" alt=""
+                 style="height: 10rem; width: 10rem; border-radius: 10rem; margin-bottom:2rem;">
             {% if target_user.profile %}
-            <h2 style="font-family: NanumSquareRoundEB">
-                {{ target_user.profile.nickname }}
-            </h2>
+            <div>
+                <h2 style="font-family: NanumSquareRoundEB">
+                    {{ target_user.profile.nickname }}
+                </h2>
+                <button class="mb-3 btn btn-secondary rounded-pill" onclick="location.href='{% url 'profileapp:update' pk=target_user.profile.pk %}'">
+                    edit
+                </button>
+            </div>
             {% else %}
                 <button class="mb-3 btn btn-secondary rounded-pill" onclick="location.href='{% url 'profileapp:create' %}'">
                     Create Profile
                 </button>
                 <br>
             {% endif %}
+
+            <h5 style="margin-bottom:3rem;">
+                {{ target_user.profile.message }}
+            </h5>
             {% if target_user == user %}
+            <div>
                 <button class="btn btn-dark rounded-pill" onclick="location.href='{% url 'accountapp:update' pk=user.id %}'">
                     Change Info
                 </button>
                 <button class="btn btn-danger rounded-pill" onclick="location.href='{% url 'accountapp:delete' pk=user.id %}'">
                     Quit
                 </button>
+            </div>
             {% endif %}
         </div>
     </div>
