@@ -11,6 +11,7 @@ from commentapp.forms import CommentCreationForm
 from commentapp.models import Comment
 
 
+
 class CommentCreateView(CreateView):
     model = Comment
     form_class = CommentCreationForm
@@ -25,6 +26,7 @@ class CommentCreateView(CreateView):
         temp_comment.writer = self.request.user
         temp_comment.save()
         return super().form_valid(form)
+
 
 @method_decorator(comment_ownership_required, 'get')
 @method_decorator(comment_ownership_required, 'post')
