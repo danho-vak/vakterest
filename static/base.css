@@ -1,6 +1,13 @@
-.vakterest_header_logo, .vakterest_footer_logo {
+.vakterest_header_logo {
     font-family: 'Major Mono Display', monospace;
+    font-size:4rem;
 }
+
+.vakterest_footer_logo {
+    font-family: 'Major Mono Display', monospace;
+    font-size:2rem;
+}
+
 
 .vakterest_footer_button {
     font-size: .6rem;
@@ -21,5 +28,5 @@
 }
 
 .vakterest_header_nav {
-    margin: 0 0.5ren;
+    margin: 0 0.5rem;
 }
