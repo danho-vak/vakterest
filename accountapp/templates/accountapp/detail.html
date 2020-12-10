@@ -30,6 +30,7 @@
                 <button class="btn btn-dark rounded-pill" onclick="location.href='{% url 'accountapp:update' pk=user.id %}'">
                     Change Info
                 </button>
+                <button class="btn btn-success rounded-pill vakterest_header_nav" onclick="location.href='{% url 'subscribeapp:list' %}'">Subscriptions</button>
                 <button class="btn btn-danger rounded-pill" onclick="location.href='{% url 'accountapp:delete' pk=user.id %}'">
                     Quit
                 </button>
