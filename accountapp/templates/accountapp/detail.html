@@ -10,8 +10,8 @@
                 {% endif %}
                 <h2 style="font-family: NanumSquareRoundEB">
                     {{ target_user.profile.nickname }}
+                    <span onclick="location.href='{% url 'profileapp:update' pk=target_user.profile.pk %}'" class="material-icons">edit</span>
                 </h2>
-                <button class="btn btn-dark rounded-pill col-5 mb-4" onclick="location.href='{% url 'profileapp:update' pk=target_user.profile.pk %}'">edit</button>
                 <h5>
                     {{ target_user.profile.message }}
                 </h5>
@@ -27,10 +27,13 @@
             </p>
 
             {% if target_user == user %}
-                <button class="btn btn-dark rounded-pill" onclick="location.href='{% url 'accountapp:update' pk=user.id %}'">
+                <button class="btn btn-dark rounded-pill mb-2" onclick="location.href='{% url 'accountapp:update' pk=user.id %}'">
                     Change Info
                 </button>
-                <button class="btn btn-success rounded-pill vakterest_header_nav" onclick="location.href='{% url 'subscribeapp:list' %}'">Subscriptions</button>
+                <br>
+                <button class="btn btn-success rounded-pill vakterest_header_nav" onclick="location.href='{% url 'subscribeapp:list' %}'">
+                    Subscriptions
+                </button>
                 <button class="btn btn-danger rounded-pill" onclick="location.href='{% url 'accountapp:delete' pk=user.id %}'">
                     Quit
                 </button>
